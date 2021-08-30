@@ -4,13 +4,17 @@ import datetime
 
 
 def do_pack():
-    """do pack"""
-    time = datetime.datetime.now()
-    date = (str(time.year) + str(time.month) + str(time.day) + str(time.hour) +
-            str(time.minute) + str(time.second))
-    try:
-        local("mkdir -p versions")
-        local("tar -cvzf versions/web_static_{}.tgz ./web_static".format(date))
-        return "./versions/web_static_{}.tgz".format(date)
-    except:
+    """Create a tar gzipped archive of the directory web_static."""
+    dt = datetime.utcnow()
+    file = "versions/web_static_{}{}{}{}{}{}.tgz".format(dt.year,
+                                                         dt.month,
+                                                         dt.day,
+                                                         dt.hour,
+                                                         dt.minute,
+                                                         dt.second)
+    if os.path.isdir("versions") is False:
+        if local("mkdir -p versions").failed is True:
+            return None
+    if local("tar -cvzf {} web_static".format(file)).failed is True:
         return None
+    return file
