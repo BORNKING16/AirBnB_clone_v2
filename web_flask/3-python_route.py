@@ -33,7 +33,7 @@ def Cistext(text):
 
 
 @app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
-@app.route('/python/(<text>)', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
 def Pythonistext(text):
     """
         pyhon/text route page
