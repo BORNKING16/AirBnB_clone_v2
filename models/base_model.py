@@ -4,6 +4,7 @@ import uuid
 import models
 import os
 from datetime import datetime
+import sqlalchemy
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 
