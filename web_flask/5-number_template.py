@@ -49,7 +49,7 @@ def isNumber(n):
     return "{} is a number".format(n)
 
 
-@app.route('/number_template/<n>', strict_slashes=False)
+@app.route('/number_template/<int:n>', strict_slashes=False)
 def number_template(n):
     """
         html route page
